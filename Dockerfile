@@ -9,4 +9,4 @@ WORKDIR /app
 RUN pip install -r requirements.txt
 EXPOSE ${port}
 ENTRYPOINT ["streamlit", "run"]
-CMD ["test_app.py"]
+CMD --server.port $PORT test_app.py
