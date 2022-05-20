@@ -9,7 +9,11 @@ if __name__ == "__main__":
     t = st.slider("I want to invest for (in years)", min_value=1,max_value=10)
     if st.button("Calculate"):
         if f == "Monthly":
-            p = p*12
+            r = r/1200
+            t = t*12
+            total = p*(1+r)*((1+r)**t - 1)/r
+        else:
+            total = p*(1+r/100)**t
         with st.spinner('computing ...'):
             time.sleep(1)
-            st.write(f"You will get INR {round(p*(1+r/100)**t,3)} in total")
+            st.write(f"You will get INR {round(total,3)} in total")
